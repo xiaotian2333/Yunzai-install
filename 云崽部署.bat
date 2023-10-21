@@ -1,17 +1,17 @@
-:: å°å¤©å¼€å‘
+:: Ğ¡Ìì¿ª·¢
 @echo off
-set name="æ–°å»ºæ–‡ä»¶å¤¹"
-set /p name=è¯·è¾“å…¥ç”¨æˆ·æ–‡ä»¶å¤¹å:
-:: äº‘å´½ç±»å‹
+set name="ĞÂ½¨ÎÄ¼ş¼Ğ"
+set /p name=ÇëÊäÈëÓÃ»§ÎÄ¼ş¼ĞÃû:
+:: ÔÆáÌÀàĞÍ
 :: 1:Yunzai-Bot 2:Miao-Yunzai
-:: é»˜è®¤ä½¿ç”¨å–µå´½
+:: Ä¬ÈÏÊ¹ÓÃß÷áÌ
 set zai-type="2"
-echo ===è¯·é€‰æ‹©äº‘å´½ç±»å‹===
+echo ===ÇëÑ¡ÔñÔÆáÌÀàĞÍ===
 echo (1) Yunzai-Bot (2) Miao-Yunzai
-echo =====è¯·è¾“å…¥é€‰æ‹©=====
-set /p zai-type=ç­‰å¾…è¾“å…¥:
+echo =====ÇëÊäÈëÑ¡Ôñ=====
+set /p zai-type=µÈ´ıÊäÈë:
 
-:: å¤„ç†äº‘å´½ç±»å‹
+:: ´¦ÀíÔÆáÌÀàĞÍ
 if "%zai-type%"=="1" (
     set zai-name="Yunzai-Bot"
 )
@@ -19,18 +19,18 @@ if "%zai-type%"=="1" (
 if "%zai-type%"=="2" (
     set zai-name="Miao-Yunzai"
 )
-:: æ–°å»ºæ–‡ä»¶å¤¹
+:: ĞÂ½¨ÎÄ¼ş¼Ğ
 md "%~dp0\%name%"
 xcopy "%~dp0\%zai-name%" "%~dp0\%name%\%zai-name%\"  /q /e /r /S /Y
 
-:: ç‰¹æ®Šå¤„ç†éƒ¨åˆ†
-:: äº‘å´½ç‰¹æ®Šå¤„ç†
+:: ÌØÊâ´¦Àí²¿·Ö
+:: ÔÆáÌÌØÊâ´¦Àí
 if "%zai-type%"=="1" (
     mklink /H "%~dp0\%name%\%zai-name%\package.json" "%~dp0\Yunzai-Bot-res\package.json"
     md "%~dp0\%name%\%zai-name%\resources
     mklink /d "%~dp0\%name%\%zai-name%\resources\font" "%~dp0\Yunzai-Bot-res\resources\font"
 )
-:: å–µå´½ç‰¹æ®Šå¤„ç†
+:: ß÷áÌÌØÊâ´¦Àí
 if "%zai-type%"=="2" (
     mklink /H "%~dp0\%name%\%zai-name%\package.json" "%~dp0\Miao-Yunzai-res\package.json"
     mklink /H "%~dp0\%name%\%zai-name%\.eslintrc.cjs" "%~dp0\Miao-Yunzai-res\.eslintrc.cjs"
@@ -39,35 +39,35 @@ if "%zai-type%"=="2" (
     mklink /H "%~dp0\%name%\%zai-name%\pnpm-workspace.yaml" "%~dp0\Miao-Yunzai-res\pnpm-workspace.yaml"
 )
 
-:: é€šç”¨å¤„ç†éƒ¨åˆ†
-:: åŸºç¡€æ–‡ä»¶å¤¹
+:: Í¨ÓÃ´¦Àí²¿·Ö
+:: »ù´¡ÎÄ¼ş¼Ğ
 mklink /d "%~dp0\%name%\%zai-name%\config\default_config" "%~dp0\Yunzai-Bot-res\config\default_config"
-mklink /H "%~dp0\%name%\%zai-name%\äº‘å´½ç®¡ç†å™¨.bat" "%~dp0\Yunzai-Bot-res\äº‘å´½ç®¡ç†å™¨.bat"
+mklink /H "%~dp0\%name%\%zai-name%\ÔÆáÌ¹ÜÀíÆ÷.bat" "%~dp0\Yunzai-Bot-res\ÔÆáÌ¹ÜÀíÆ÷.bat"
 
-:: æ–°å»ºç¼“å­˜æ–‡ä»¶å¤¹
+:: ĞÂ½¨»º´æÎÄ¼ş¼Ğ
 md "%~dp0\%name%\%zai-name%\data"
-:: è§’è‰²æ”»ç•¥ç¼“å­˜
+:: ½ÇÉ«¹¥ÂÔ»º´æ
 mklink /d "%~dp0\%name%\%zai-name%\data\strategy" "%~dp0\Yunzai-Bot-res\data\strategy"
-:: è§’è‰²æ”»ç•¥ç¼“å­˜
+:: ½ÇÉ«¹¥ÂÔ»º´æ
 mklink /d "%~dp0\%name%\%zai-name%\data\material_other" "%~dp0\Yunzai-Bot-res\data\material_other"
-:: èµ„æºåœ°å›¾ç¼“å­˜
+:: ×ÊÔ´µØÍ¼»º´æ
 mklink /d "%~dp0\%name%\%zai-name%\data\map" "%~dp0\Yunzai-Bot-res\data\map"
-:: material_å‹äººA
-mklink /d "%~dp0\%name%\%zai-name%\data\material_å‹äººA" "%~dp0\Yunzai-Bot-res\data\material_å‹äººA"
+:: material_ÓÑÈËA
+mklink /d "%~dp0\%name%\%zai-name%\data\material_ÓÑÈËA" "%~dp0\Yunzai-Bot-res\data\material_ÓÑÈËA"
 
-:: æ•°æ®äº’é€šå¤„ç†
-:: è¿˜æ²¡å†™å‘¢
+:: Êı¾İ»¥Í¨´¦Àí
+:: »¹Ã»Ğ´ÄØ
 
-:: å¼€è£…å–µå–µæ’ä»¶
+:: ¿ª×°ß÷ß÷²å¼ş
 cd %name%\%zai-name%
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin/
 
-:: å¼€è£…ä¾èµ–
+:: ¿ª×°ÒÀÀµ
 pnpm i
 
 cd ../..
 
-echo =====å®‰è£…å®Œæ¯•=====
-echo ç”¨æˆ·æ–‡ä»¶å¤¹ï¼š"%~dp0\%name%"
-echo äº‘å´½ç±»å‹ï¼š%zai-name%
+echo =====°²×°Íê±Ï=====
+echo ÓÃ»§ÎÄ¼ş¼Ğ£º"%~dp0\%name%"
+echo ÔÆáÌÀàĞÍ£º%zai-name%
 echo =================

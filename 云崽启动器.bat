@@ -2,14 +2,14 @@
 ::chcp 65001
 :start
 
-:: è¾“å‡ºæç¤º
-echo =============å’¸é±¼xiaotianæŽ§åˆ¶ç«¯================
-echo (1)  å¯åŠ¨äº‘å´½                 (2)  æ›´æ¢è´¦å·
-echo (3)  è„šæœ¬ä¿¡æ¯                 (4)  é€€å‡ºè„šæœ¬
+:: Êä³öÌáÊ¾
+echo =============ÏÌÓãxiaotian¿ØÖÆ¶Ë================
+echo (1)  Æô¶¯ÔÆáÌ                 (2)  ¸ü»»ÕËºÅ
+echo (3)  ½Å±¾ÐÅÏ¢                 (4)  ÍË³ö½Å±¾
 echo ==============================================
-echo è¯·åœ¨10ç§’å†…è¾“å…¥ï¼Œå¦åˆ™è‡ªåŠ¨è¿è¡Œäº‘å´½
+echo ÇëÔÚ10ÃëÄÚÊäÈë£¬·ñÔò×Ô¶¯ÔËÐÐÔÆáÌ
 
-choice /c:1234 /M è¾“å…¥é€‰æ‹© /t 10 /d 1
+choice /c:1234 /M ÊäÈëÑ¡Ôñ /t 10 /d 1
 
 IF ERRORLEVEL 1 (
     set id=1
@@ -23,29 +23,29 @@ IF ERRORLEVEL 3 (
 IF ERRORLEVEL 4 (
     set id=4
 )
-:: å¯åŠ¨äº‘å´½
+:: Æô¶¯ÔÆáÌ
 if "%id%"=="1" (
-    echo æ­£åœ¨å¯åŠ¨äº‘å´½
+    echo ÕýÔÚÆô¶¯ÔÆáÌ
     @node app
     exit
 )
-:: æ¢ç™»å½•è´¦å·
+:: »»µÇÂ¼ÕËºÅ
 if "%id%"=="2" (
-    echo æ›´æ¢ç™»å½•è´¦å·ï¼Œè¯·ä½¿ç”¨å®‰å“æ‰‹æœºæˆ–å®‰å“å¹³æ¿åè®®
+    echo ¸ü»»µÇÂ¼ÕËºÅ£¬ÇëÊ¹ÓÃ°²×¿ÊÖ»ú»ò°²×¿Æ½°åÐ­Òé
     @node app login
     exit
 )
-:: è„šæœ¬ä¿¡æ¯
+:: ½Å±¾ÐÅÏ¢
 if "%id%"=="3" (
-    echo =============è„šæœ¬ä¿¡æ¯================
-    echo æœ¬è„šæœ¬ä¸ºå’¸é±¼xiaotianç½‘é¡µç«¯äº‘å´½æŽ§åˆ¶å™¨
-    echo ç‰ˆæœ¬1.1
-    echo æœºå™¨äººã®å®¶ï¼š628306033
-    echo Copyright Â© 2023 xiaotian
+    echo =============½Å±¾ÐÅÏ¢================
+    echo ±¾½Å±¾ÎªÏÌÓãxiaotianÍøÒ³¶ËÔÆáÌ¿ØÖÆÆ÷
+    echo °æ±¾1.1
+    echo »úÆ÷ÈË¤Î¼Ò£º628306033
+    echo Copyright ? 2023 xiaotian
     echo ====================================
     goto start
 )
 
-:: è¿è¡Œç»“æŸ
-echo è„šæœ¬é€€å‡º
+:: ÔËÐÐ½áÊø
+echo ½Å±¾ÍË³ö
 exit
