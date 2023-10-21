@@ -1,5 +1,8 @@
 @echo off
-::chcp 65001
+:: 日志重定向，开启为 "1"  不开启为 "0"
+set log-redirect="1"
+:: 内存盘目录，如不使用日志重定向可不用配置
+set tmp-path="A:"
 :start
 
 :: 输出提示
@@ -26,6 +29,24 @@ IF ERRORLEVEL 4 (
 :: 启动云崽
 if "%id%"=="1" (
     echo 正在启动云崽
+    :: 执行日志重定向逻辑
+    if %log-redirect%=="1" (
+        :: 取当前用户名
+        for %%i in (..) do set name=%%~nxi
+        :: 判段是否已存在软连接
+        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i
+            if defined is_link (
+                :: 已存在，判断内存盘中是否存在对应目录
+                if not exist "%tmp-path%\%name%" (
+                    md "%tmp-path%\%name%"
+                )
+            ) else (
+                :: 不是软连接，删除并创建软连接
+                del /f /q ".\logs"
+                md "%tmp-path%\%name%"
+                mklink /d ".\logs" "%tmp-path%\%name%"
+            )
+    )
     @node app
     exit
 )
@@ -39,9 +60,9 @@ if "%id%"=="2" (
 if "%id%"=="3" (
     echo =============脚本信息================
     echo 本脚本为咸鱼xiaotian网页端云崽控制器
-    echo 版本1.1
+    echo 版本1.2
     echo 机器人の家：628306033
-    echo Copyright ? 2023 xiaotian
+    echo Copyright 2023 xiaotian
     echo ====================================
     goto start
 )
