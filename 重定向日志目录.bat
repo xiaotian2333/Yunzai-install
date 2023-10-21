@@ -21,6 +21,10 @@ if "%zai-type%"=="2" (
     set zai-name="Miao-Yunzai"
 )
 
+:: 删除已有的日志文件夹
+del /f /q "%~dp0\%name%\%zai-name%\logs"
+:: 内存盘中新建对应文件夹
+md "%tmp-path%\%name%"
 :: 日志重定向到内存盘
 mklink /d "%~dp0\%name%\%zai-name%\logs" "%tmp-path%\%name%"
 
