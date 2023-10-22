@@ -32,18 +32,18 @@ if "%id%"=="1" (
     :: 执行日志重定向逻辑
     if %log-redirect%=="1" (
         :: 判段是否已存在软连接
-        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i
+        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i>nul
             if not defined is_link (
                 :: 不是软连接，删除并创建软连接
-                rd /s /q ".\logs"
-                md "%tmp-path%\"
-                mklink /d ".\logs" "%tmp-path%\"
+                rd /s /q ".\logs">nul
+                md "%tmp-path%\">nul 2>nul
+                mklink /d ".\logs" "%tmp-path%\">nul
             )
     ) else (
-        :: 如果不启用软连接就删除软连接在启动
-        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i
+        :: 如果不启用软连接就删除软连接再启动
+        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i>nul
             if defined is_link (
-                rmdir ".\logs"
+                rmdir ".\logs">nul
             )
     )
     @node app
