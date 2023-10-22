@@ -2,7 +2,7 @@
 :: 日志重定向，开启为 "1"  不开启为 "0"
 set log-redirect="1"
 :: 内存盘目录，如不使用日志重定向可不用配置
-set tmp-path="A:"
+set tmp-path="A:\Yunzai-log"
 :start
 
 :: 输出提示
@@ -31,20 +31,19 @@ if "%id%"=="1" (
     echo 正在启动云崽
     :: 执行日志重定向逻辑
     if %log-redirect%=="1" (
-        :: 取当前用户名
-        for %%i in (..) do set name=%%~nxi
         :: 判段是否已存在软连接
         for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i
-            if defined is_link (
-                :: 已存在，判断内存盘中是否存在对应目录
-                if not exist "%tmp-path%\%name%" (
-                    md "%tmp-path%\%name%"
-                )
-            ) else (
+            if not defined is_link (
                 :: 不是软连接，删除并创建软连接
                 rd /s /q ".\logs"
-                md "%tmp-path%\%name%"
-                mklink /d ".\logs" "%tmp-path%\%name%"
+                md "%tmp-path%\"
+                mklink /d ".\logs" "%tmp-path%\"
+            )
+    ) else (
+        :: 如果不启用软连接就删除软连接在启动
+        for /f %%i in ('dir /al/b "logs" 2^>nul') do set is_link=%%i
+            if defined is_link (
+                rmdir ".\logs"
             )
     )
     @node app
