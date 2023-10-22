@@ -42,7 +42,7 @@ if "%id%"=="1" (
                 )
             ) else (
                 :: 不是软连接，删除并创建软连接
-                del /f /q ".\logs"
+                rd /s /q ".\logs"
                 md "%tmp-path%\%name%"
                 mklink /d ".\logs" "%tmp-path%\%name%"
             )
