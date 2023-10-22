@@ -57,12 +57,13 @@ if "%id%"=="2" (
 )
 :: 脚本信息
 if "%id%"=="3" (
-    echo =============脚本信息================
-    echo 本脚本为咸鱼xiaotian网页端云崽控制器
-    echo 版本1.2
+    echo ===================脚本信息======================
+    echo 本脚本为 咸鱼xiaotian 网页端云崽控制器
+    echo 本脚本开源于 GitHub 欢迎 star
+    echo https://github.com/xiaotian2333/yunzai-install
     echo 机器人の家：628306033
     echo Copyright 2023 xiaotian
-    echo ====================================
+    echo =================================================
     goto start
 )
 
