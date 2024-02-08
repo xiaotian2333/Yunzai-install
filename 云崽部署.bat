@@ -43,6 +43,7 @@ if "%zai-type%"=="2" (
 :: 基础文件夹
 mklink /d "%~dp0\%name%\%zai-name%\config\default_config" "%~dp0\Yunzai-Bot-res\config\default_config"
 mklink /H "%~dp0\%name%\%zai-name%\云崽管理器.bat" "%~dp0\Yunzai-Bot-res\云崽管理器.bat"
+mklink /d "%~dp0\%name%\%zai-name%\plugins\genshin\resources" "%~dp0\Yunzai-Bot-res\plugins\genshin\resources" 
 
 :: 新建缓存文件夹
 md "%~dp0\%name%\%zai-name%\data"
@@ -71,3 +72,5 @@ echo =====安装完毕=====
 echo 用户文件夹："%~dp0\%name%"
 echo 云崽类型：%zai-name%
 echo =================
+
+cmd
